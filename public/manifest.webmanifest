@@ -1,0 +1,12 @@
+{
+  "name": "통근버스 노선 안내",
+  "short_name": "통근버스",
+  "description": "통근버스 노선과 정류장 시간 조회",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f3f5f0",
+  "theme_color": "#173f37",
+  "icons": [
+    { "src": "/assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

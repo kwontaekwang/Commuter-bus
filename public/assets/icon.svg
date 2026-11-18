@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="통근버스">
+  <rect width="128" height="128" rx="28" fill="#173f37"/>
+  <path d="M34 25h49c12 0 19 7 19 19v45c0 7-4 12-10 15v8a6 6 0 0 1-12 0v-6H48v6a6 6 0 0 1-12 0v-8c-6-3-10-8-10-15V44c0-12 7-19 8-19Z" fill="#f0c75e"/>
+  <rect x="39" y="39" width="50" height="28" rx="6" fill="#f8faf5"/>
+  <circle cx="45" cy="88" r="7" fill="#173f37"/>
+  <circle cx="83" cy="88" r="7" fill="#173f37"/>
+  <path d="M51 79h26" stroke="#173f37" stroke-width="6" stroke-linecap="round"/>
+</svg>

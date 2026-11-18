@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#173f37">
+  <meta name="description" content="통근버스 노선과 정류장 시간을 빠르게 조회하세요.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/assets/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="/styles.css">
+  <title>통근버스 노선 안내</title>
+</head>
+<body>
+  <a class="skip-link" href="#routes">노선 목록으로 이동</a>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="통근버스 홈">
+      <span class="brand-mark" aria-hidden="true">B</span>
+      <span><strong>COMMUTE</strong><small>통근버스 노선 안내</small></span>
+    </a>
+    <a class="admin-link" href="/admin">관리자</a>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">01-29 통합 노선표 기준</span>
+        <h1 id="hero-title">오늘 탈 버스,<br><em>정류장부터 빠르게.</em></h1>
+        <p>노선명이나 정류장을 검색하고 시간표를 한눈에 확인하세요.</p>
+      </div>
+      <div class="stats" aria-label="노선 데이터 요약">
+        <div><strong id="route-count">—</strong><span>운행 노선</span></div>
+        <div><strong id="stop-count">—</strong><span>정류장 기록</span></div>
+        <div><strong id="category-count">—</strong><span>운행 구분</span></div>
+      </div>
+    </section>
+
+    <section class="notice-panel" aria-label="운행 안내">
+      <span class="notice-icon" aria-hidden="true">i</span>
+      <div id="notices"><p>노선 정보를 불러오는 중입니다.</p></div>
+    </section>
+
+    <section class="finder" aria-labelledby="finder-title">
+      <div class="section-heading">
+        <div><span class="eyebrow">ROUTE FINDER</span><h2 id="finder-title">노선 찾기</h2></div>
+        <button id="favorite-toggle" class="ghost-button" type="button" aria-pressed="false">☆ 즐겨찾기만</button>
+      </div>
+      <label class="search-box" for="search">
+        <span aria-hidden="true">⌕</span>
+        <input id="search" type="search" autocomplete="off" placeholder="노선명, 지역, 정류장 검색" aria-describedby="result-summary">
+        <button id="clear-search" type="button" aria-label="검색어 지우기" hidden>×</button>
+      </label>
+      <div class="filters" aria-label="노선 필터">
+        <label><span>구분</span><select id="category-filter"><option value="">전체</option></select></label>
+        <label><span>운행유형</span><select id="service-filter"><option value="">전체</option></select></label>
+        <label><span>시간대</span><select id="period-filter"><option value="">전체</option></select></label>
+        <button id="reset-filters" class="text-button" type="button">필터 초기화</button>
+      </div>
+    </section>
+
+    <section class="results" id="routes" aria-labelledby="result-summary">
+      <div class="result-head">
+        <h2 id="result-summary" aria-live="polite">노선을 불러오는 중입니다</h2>
+        <span id="data-revision"></span>
+      </div>
+      <div id="route-grid" class="route-grid" aria-live="polite"></div>
+      <div id="empty-state" class="empty-state" hidden>
+        <strong>일치하는 노선이 없습니다.</strong>
+        <p>검색어를 줄이거나 필터를 초기화해 보세요.</p>
+      </div>
+      <div id="error-state" class="empty-state error" hidden>
+        <strong>노선 정보를 불러오지 못했습니다.</strong>
+        <p>잠시 후 다시 시도해 주세요.</p>
+        <button id="retry" class="primary-button" type="button">다시 불러오기</button>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="route-dialog" class="route-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-top">
+      <div><span id="dialog-id" class="route-id"></span><h2 id="dialog-title"></h2><p id="dialog-meta"></p></div>
+      <button id="dialog-close" class="icon-button" type="button" aria-label="닫기">×</button>
+    </div>
+    <div id="dialog-badges" class="badges"></div>
+    <ol id="stop-list" class="stop-list"></ol>
+    <footer class="dialog-footer"><span id="dialog-source"></span><button id="dialog-favorite" class="ghost-button" type="button"></button></footer>
+  </dialog>
+
+  <footer class="site-footer"><p>노선 정보는 <strong>전체_정류장</strong> 시트 기준입니다. 시간 공란은 임의로 추정하지 않았습니다.</p></footer>
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
